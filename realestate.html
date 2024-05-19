@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/x-icon" href="favicon.jpg">
+  <link rel="stylesheet" type="text/css" href="DivStyle.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food</title>
+</head>
+<body>
+    <div class="topdiv2">
+        <h1>Real Estates</h1>
+        <p class="topp">find your dream home or sell your property for top dollar</p>
+    </div>
+    <h3>Real Estates Details</h3>
+    <div class="manual-display">
+        <h2>Khan Real Estate</h2>
+        <p>OwnerName: Fuzail Khan</p>
+        <p>Email: fk47@gmail.com</p>
+        <p>Contact: 033456782</p>
+        <p>Address: Kala Pul, Abbottabad</p>
+        <p>Business Description: We promise to find a suitable home for you</p> 
+    </div>
+    <div id="data-display"></div>
+
+  <script>
+    const dataDiv = document.getElementById('data-display');
+
+    // Check if form data exists in local storage
+    const storedData = localStorage.getItem('formData');
+    if (storedData) {
+      const parsedData = JSON.parse(storedData);
+
+      // Check if category is "food"
+      if (parsedData.businesscategory === 'realestate') {
+        let displayText = `
+          <h2>${parsedData.businessname}</h2>
+          <p>Owner Name: ${parsedData.ownername}</p>
+          <p>Email: ${parsedData.email}</p>
+          <p>Contact: ${parsedData.contact}</p>
+          <p>Address: ${parsedData.businessaddress}</p>
+          <p>Business Description: ${parsedData.businessdescription}</p>
+        `;
+        dataDiv.innerHTML = displayText;
+      } else {
+        dataDiv.textContent = 'This data is not for a food business.';
+      }
+    } else {
+      dataDiv.textContent = 'No form data found in local storage.';
+    }
+  </script>
+</body>
+</html>

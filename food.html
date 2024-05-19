@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/x-icon" href="favicon.jpg">
+  <link rel="stylesheet" type="text/css" href="DivStyle.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food</title>
+</head>
+<body>
+    <div class="topdiv">
+        <h1>Food Businesses</h1>
+        <p class="topp">your comfort place to the ultimate food fusion</p>
+    </div>
+    <h3>Food Businesses Details</h3>
+    <div class="manual-display">
+        <h2>Cheezious</h2>
+        <p>OwnerName: Einstein</p>
+        <p>Email: einstein123@gmail.com</p>
+        <p>Contact: 033456782</p>
+        <p>Address: I14, Islamabad</p>
+        <p>Business Description: Craving melted cheesy goodness? <br>Look no further than Cheezious, your one-stop shop for delicious pizzas, wings, and more!</p> 
+    </div>
+    <div  class="manual-display">
+        <h2>Crunchious</h2>
+        <p>OwnerName: Abdullah</p>
+        <p>Email: AD123@gmail.com</p>
+        <p>Contact: 033456783</p>
+        <p>Address: Jadoon Plaza Phase 1, Abbottabad</p>
+        <p>Business Description: We serve up the crispiest, crunchiest fried chicken in town!</p> 
+    </div>
+    <div id="data-display"></div>
+
+  <script>
+    const dataDiv = document.getElementById('data-display');
+
+    // Check if form data exists in local storage
+    const storedData = localStorage.getItem('formData');
+    if (storedData) {
+      const parsedData = JSON.parse(storedData);
+
+      // Check if category is "food"
+      if (parsedData.businesscategory === 'food') {
+        let displayText = `
+          <h2>${parsedData.businessname}</h2>
+          <p>Owner Name: ${parsedData.ownername}</p>
+          <p>Email: ${parsedData.email}</p>
+          <p>Contact: ${parsedData.contact}</p>
+          <p>Address: ${parsedData.businessaddress}</p>
+          <p>Business Description: ${parsedData.businessdescription}</p>
+        `;
+        dataDiv.innerHTML = displayText;
+      } else {
+        dataDiv.textContent = 'This data is not for a food business.';
+      }
+    } else {
+      dataDiv.textContent = 'No form data found in local storage.';
+    }
+  </script>
+</body>
+</html>

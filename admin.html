@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/x-icon" href="favicon.jpg">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration</title>
+</head>
+<body>
+  <div class="topdiv1">
+    <h1>Regsiter Here</h1>
+    <p>register your business with BizHub to reach the right audience</p>
+  </div>
+  <div class="form-container">
+    <form id="myForm">
+      <label for="ownername">OwnerName</label>
+      <input type="text" id="ownername" name="ownerrname">
+      <label for="email">Email</label>
+      <input type="text" id="email" name="email">
+      <label for="contact">Contact Number</label>
+      <input type="text" id="contact" name="contact">
+      <label for="businessname">Business Name</label>
+      <input type="text" id="businessname" name="businessname">
+      <label for="businesscategory">Category</label>
+      <select class="businesscategory" id="businesscategory" name="businesscategory">
+        <option value="">Select a category</option>
+        <option value="food">Food</option>
+        <option value="realestate">Real Estate</option>
+        <option value="school">School</option>
+        <option value="lawfirm">Law Firm</option>
+        <option value="clinic">Clinic</option>
+      </select>
+      <label for="businessaddress">Address</label>
+      <textarea id="businessaddress" name="businessaddress"></textarea>
+      <label for="businessdescription">Description</label>
+      <textarea id="businessdescription" name="businessdescription"></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('myForm');
+    const ownernameInput = document.getElementById('ownername');
+    const emailInput = document.getElementById('email');
+    const contactInput = document.getElementById('contact');
+    const businessnameInput = document.getElementById('businessname');
+    const businesscategorySelect = document.getElementById('businesscategory');
+    const businessaddressInput = document.getElementById('businessaddress');
+    const businessdescriptionInput = document.getElementById('businessdescription');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const ownername = ownernameInput.value;
+      const email = emailInput.value;
+      const contact = contactInput.value;
+      const businessname = businessnameInput.value;
+      const businesscategory = businesscategorySelect.value;
+      const businessaddress = businessaddressInput.value;
+      const businessdescription = businessdescriptionInput.value;
+
+      const data = {
+        ownername,
+        email,
+        contact,
+        businessname,
+        businesscategory,
+        businessaddress,
+        businessdescription,
+      };
+
+      localStorage.setItem('formData', JSON.stringify(data));
+
+    //   const redirectUrl = businesscategory === 'food' ? 'food.html' : 'index.html';
+    //   window.location.href = redirectUrl;
+    });
+  </script>
+</body>
+</html>
